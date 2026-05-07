@@ -2,65 +2,125 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>Game Komponen Komputer</title>
+<title>Game Komponen Komputer Futuristik</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
+
 body{
-  font-family: Arial;
+  margin:0;
+  font-family:'Orbitron', sans-serif;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color:#e2e8f0;
   text-align:center;
-  background:#eef2ff;
   padding:20px;
 }
 
+/* TITLE */
+h1{
+  font-size:28px;
+  text-shadow:0 0 15px #38bdf8;
+}
+
+/* LAYOUT */
 .container{
   display:flex;
-  justify-content:space-around;
+  justify-content:center;
+  gap:30px;
+  flex-wrap:wrap;
   margin-top:20px;
 }
 
+/* GLASS BOX */
 .box{
-  width:300px;
-  background:white;
+  width:320px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(12px);
+  border-radius:18px;
   padding:20px;
-  border-radius:15px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+  box-shadow:0 0 20px rgba(56,189,248,0.15);
+  transition:0.3s;
 }
 
+.box:hover{
+  transform:translateY(-5px);
+  box-shadow:0 0 25px rgba(56,189,248,0.3);
+}
+
+/* ITEM CARD */
 .item{
-  background:#2563eb;
+  background:linear-gradient(145deg,#0ea5e9,#2563eb);
   color:white;
-  margin:10px;
+  margin:10px 0;
   padding:10px;
-  border-radius:10px;
+  border-radius:12px;
   cursor:grab;
+  transition:0.3s;
+  box-shadow:0 0 10px rgba(59,130,246,0.4);
 }
 
-.cpu{
-  min-height:250px;
-  border:3px dashed #1d4ed8;
-  padding:15px;
+.item:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 20px rgba(56,189,248,0.6);
+}
+
+/* IMAGE */
+.item img{
   border-radius:10px;
-  background:#dbeafe;
+  margin-bottom:5px;
 }
 
+/* CPU AREA */
+.cpu{
+  min-height:260px;
+  border:2px dashed #38bdf8;
+  border-radius:15px;
+  padding:15px;
+  background:rgba(56,189,248,0.05);
+  transition:0.3s;
+}
+
+.cpu:hover{
+  box-shadow:0 0 20px rgba(56,189,248,0.3);
+}
+
+/* INFO BOX */
 #infoBox{
   margin-top:20px;
-  background:#fff;
   padding:15px;
-  border-radius:10px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+  border-radius:12px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
   min-height:50px;
+  backdrop-filter: blur(10px);
 }
 
-.correct{ background:green !important; }
-.wrong{ background:red !important; }
-</style>
+/* SCORE */
+#score{
+  margin-top:15px;
+  font-size:18px;
+  color:#38bdf8;
+  text-shadow:0 0 10px #38bdf8;
+}
 
+/* EFFECT */
+.correct{
+  border:2px solid #22c55e !important;
+  box-shadow:0 0 15px #22c55e;
+}
+
+.wrong{
+  border:2px solid #ef4444 !important;
+  box-shadow:0 0 15px #ef4444;
+}
+</style>
 </head>
+
 <body>
 
-<h1>🎮 Game Komponen Komputer</h1>
-<p>Seret ke CPU dan klik untuk melihat penjelasan</p>
+<h1>🧠 GAME KOMPONEN KOMPUTER</h1>
+<p>Drag ke CPU Area & klik untuk info</p>
 
 <div class="container">
 
@@ -68,69 +128,60 @@ body{
 <div class="box">
 <h3>Komponen</h3>
 
-<div class="item" draggable="true" id="keyboard" onclick="showInfo('Keyboard: alat untuk memasukkan huruf dan angka ke komputer.')">
-  <img src="https://i5.walmartimages.com/asr/48b6c361-d1cc-4562-b5fa-a6e0b4a961c6.f471d9dcc4cb23bf3b79722e9f27961f.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF" alt="Keyboard" width="100"><br>
+<div class="item" draggable="true" id="keyboard" onclick="showInfo('Keyboard: alat input teks.')">
+<img src="https://i5.walmartimages.com/asr/48b6c361-d1cc-4562-b5fa-a6e0b4a961c6.f471d9dcc4cb23bf3b79722e9f27961f.jpeg" width="100"><br>
 Keyboard
 </div>
 
-<div class="item" draggable="true" id="monitor" onclick="showInfo('Monitor: perangkat output untuk menampilkan gambar.')">
-  <img src="https://www.sceptre.com/image/cache/data/product_gallery/1458-C275B-FWT240/Tilt%20Up%20View-1500x1044.jpg" alt="Monitor" width="100"><br>
+<div class="item" draggable="true" id="monitor" onclick="showInfo('Monitor: menampilkan output visual.')">
+<img src="https://www.sceptre.com/image/cache/data/product_gallery/1458-C275B-FWT240/Tilt%20Up%20View-1500x1044.jpg" width="100"><br>
 Monitor
 </div>
 
-<div class="item" draggable="true" id="ram" onclick="showInfo('RAM: memori sementara saat komputer bekerja.')">
-  <img src="https://1.bp.blogspot.com/-H0bE5wazLLY/XyOdae-xHrI/AAAAAAAAAgw/nSX4q872Y0o6HcsLiOusbvLhYO31FfjpACLcBGAsYHQ/s2048/ram-1515556.jpg" alt="RAM" width="100"><br>
+<div class="item" draggable="true" id="ram" onclick="showInfo('RAM: memori sementara.')">
+<img src="https://1.bp.blogspot.com/-H0bE5wazLLY/XyOdae-xHrI/AAAAAAAAAgw/nSX4q872Y0o6HcsLiOusbvLhYO31FfjpACLcBGAsYHQ/s2048/ram-1515556.jpg" width="100"><br>
 RAM
 </div>
 
-<div class="item" draggable="true" id="mouse" onclick="showInfo('Mouse: alat untuk menggerakkan kursor.')">
-  <img src="https://www.bhphotovideo.com/images/images2500x2500/logitech_910_005790_g203_lightsync_gaming_mouse_1574402.jpg" alt="Mouse" width="100"> <br>
+<div class="item" draggable="true" id="mouse" onclick="showInfo('Mouse: navigasi kursor.')">
+<img src="https://www.bhphotovideo.com/images/images2500x2500/logitech_910_005790_g203_lightsync_gaming_mouse_1574402.jpg" width="100"><br>
 Mouse
 </div>
 
-<div class="item" draggable="true" id="powersupply" onclick="showInfo('Power Supply: menyediakan listrik untuk komputer.')">
-  <img src="https://ritaelfianis.id/wp-content/uploads/2022/09/Apa-itu-Power-Supply-Cara-Memilih-Untuk-PC-Anda.jpg" alt="Power Supply" width="100"> <br>
+<div class="item" draggable="true" id="powersupply" onclick="showInfo('Power Supply: sumber listrik PC.')">
+<img src="https://ritaelfianis.id/wp-content/uploads/2022/09/Apa-itu-Power-Supply-Cara-Memilih-Untuk-PC-Anda.jpg" width="100"><br>
 Power Supply
 </div>
 
-<div class="item" draggable="true" id="processor" onclick="showInfo('Processor: adalah otak dari perangkat komputasi modern.')">  
-  <img src="https://www.scientecheasy.com/wp-content/uploads/2023/07/cpu-diagram.png" alt="Processor" width="100"> <br>     
+<div class="item" draggable="true" id="processor" onclick="showInfo('Processor: otak komputer.')">
+<img src="https://www.scientecheasy.com/wp-content/uploads/2023/07/cpu-diagram.png" width="100"><br>
 Processor
 </div>
 
-<div class="item" draggable="true" id="infocus" onclick="showInfo('Infocus: bukan komponen komputer 🚫')">
-  <img src="https://4.bp.blogspot.com/-yL-P626Ac8g/XItOSYgw2fI/AAAAAAAAADs/_imGoK1IArkg9vhEbPFo-qraoiGYiua6gCLcBGAs/s1600/Proyektor_Acer_X1123H_3.jpg" alt="Infocus" width="100"> <br>
+<div class="item" draggable="true" id="infocus" onclick="showInfo('Infocus: bukan komponen PC 🚫')">
+<img src="https://4.bp.blogspot.com/-yL-P626Ac8g/XItOSYgw2fI/AAAAAAAAADs/_imGoK1IArkg9vhEbPFo-qraoiGYiua6gCLcBGAs/s1600/Proyektor_Acer_X1123H_3.jpg" width="100"><br>
 Infocus
 </div>
 
 </div>
 
-<!-- CPU AREA -->
+<!-- CPU -->
 <div class="box">
-<h3>🖥️ CPU Area</h3>
-<div class="cpu" id="cpuBox">
-Letakkan komponen di sini
-</div>
+<h3>⚡ CPU CORE</h3>
+<div class="cpu" id="cpuBox">Drop komponen di sini</div>
 </div>
 
 </div>
 
-<!-- INFO -->
-<div id="infoBox">
-Klik komponen untuk melihat penjelasan
-</div>
-
+<div id="infoBox">Klik komponen untuk detail</div>
 <div id="score">Skor: 0</div>
 
 <script>
-
 let score = 0;
-
-const correct = ["keyboard","monitor","ram","mouse","cpu","processor","powersupply"];
+const correct = ["keyboard","monitor","ram","mouse","powersupply","processor"];
 
 const items = document.querySelectorAll('.item');
 const cpuBox = document.getElementById('cpuBox');
-const infoBox = document.getElementById('infoBox');
 
 items.forEach(item=>{
   item.addEventListener('dragstart', e=>{
@@ -138,9 +189,7 @@ items.forEach(item=>{
   });
 });
 
-cpuBox.addEventListener('dragover', e=>{
-  e.preventDefault();
-});
+cpuBox.addEventListener('dragover', e=>e.preventDefault());
 
 cpuBox.addEventListener('drop', e=>{
   e.preventDefault();
@@ -161,9 +210,8 @@ cpuBox.addEventListener('drop', e=>{
 });
 
 function showInfo(text){
-  infoBox.innerText = text;
+  document.getElementById("infoBox").innerText = text;
 }
-
 </script>
 
 </body>
