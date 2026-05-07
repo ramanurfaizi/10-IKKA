@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Game Komponen Komputer</title>
+
+<style>
+body{
+  font-family: Arial;
+  text-align:center;
+  background:#eef2ff;
+  padding:20px;
+}
+
+.container{
+  display:flex;
+  justify-content:space-around;
+  margin-top:20px;
+}
+
+.box{
+  width:300px;
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+.item{
+  background:#2563eb;
+  color:white;
+  margin:10px;
+  padding:10px;
+  border-radius:10px;
+  cursor:grab;
+}
+
+.cpu{
+  min-height:250px;
+  border:3px dashed #1d4ed8;
+  padding:15px;
+  border-radius:10px;
+  background:#dbeafe;
+}
+
+#infoBox{
+  margin-top:20px;
+  background:#fff;
+  padding:15px;
+  border-radius:10px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+  min-height:50px;
+}
+
+.correct{ background:green !important; }
+.wrong{ background:red !important; }
+</style>
+
+</head>
+<body>
+
+<h1>🎮 Game Komponen Komputer</h1>
+<p>Seret ke CPU dan klik untuk melihat penjelasan</p>
+
+<div class="container">
+
+<!-- LIST -->
+<div class="box">
+<h3>Komponen</h3>
+
+<div class="item" draggable="true" id="keyboard" onclick="showInfo('Keyboard: alat untuk memasukkan huruf dan angka ke komputer.')">
+  <img src="https://i5.walmartimages.com/asr/48b6c361-d1cc-4562-b5fa-a6e0b4a961c6.f471d9dcc4cb23bf3b79722e9f27961f.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF" alt="Keyboard" width="100"><br>
+Keyboard
+</div>
+
+<div class="item" draggable="true" id="monitor" onclick="showInfo('Monitor: perangkat output untuk menampilkan gambar.')">
+  <img src="https://www.sceptre.com/image/cache/data/product_gallery/1458-C275B-FWT240/Tilt%20Up%20View-1500x1044.jpg" alt="Monitor" width="100"><br>
+Monitor
+</div>
+
+<div class="item" draggable="true" id="ram" onclick="showInfo('RAM: memori sementara saat komputer bekerja.')">
+  <img src="https://1.bp.blogspot.com/-H0bE5wazLLY/XyOdae-xHrI/AAAAAAAAAgw/nSX4q872Y0o6HcsLiOusbvLhYO31FfjpACLcBGAsYHQ/s2048/ram-1515556.jpg" alt="RAM" width="100"><br>
+RAM
+</div>
+
+<div class="item" draggable="true" id="mouse" onclick="showInfo('Mouse: alat untuk menggerakkan kursor.')">
+  <img src="https://www.bhphotovideo.com/images/images2500x2500/logitech_910_005790_g203_lightsync_gaming_mouse_1574402.jpg" alt="Mouse" width="100"> <br>
+Mouse
+</div>
+
+<div class="item" draggable="true" id="powersupply" onclick="showInfo('Power Supply: menyediakan listrik untuk komputer.')">
+  <img src="https://ritaelfianis.id/wp-content/uploads/2022/09/Apa-itu-Power-Supply-Cara-Memilih-Untuk-PC-Anda.jpg" alt="Power Supply" width="100"> <br>
+Power Supply
+</div>
+
+<div class="item" draggable="true" id="processor" onclick="showInfo('Processor: adalah otak dari perangkat komputasi modern.')">  
+  <img src="https://www.scientecheasy.com/wp-content/uploads/2023/07/cpu-diagram.png" alt="Processor" width="100"> <br>     
+Processor
+</div>
+
+<div class="item" draggable="true" id="infocus" onclick="showInfo('Infocus: bukan komponen komputer 🚫')">
+  <img src="https://4.bp.blogspot.com/-yL-P626Ac8g/XItOSYgw2fI/AAAAAAAAADs/_imGoK1IArkg9vhEbPFo-qraoiGYiua6gCLcBGAs/s1600/Proyektor_Acer_X1123H_3.jpg" alt="Infocus" width="100"> <br>
+Infocus
+</div>
+
+</div>
+
+<!-- CPU AREA -->
+<div class="box">
+<h3>🖥️ CPU Area</h3>
+<div class="cpu" id="cpuBox">
+Letakkan komponen di sini
+</div>
+</div>
+
+</div>
+
+<!-- INFO -->
+<div id="infoBox">
+Klik komponen untuk melihat penjelasan
+</div>
+
+<div id="score">Skor: 0</div>
+
+<script>
+
+let score = 0;
+
+const correct = ["keyboard","monitor","ram","mouse","cpu","processor","powersupply"];
+
+const items = document.querySelectorAll('.item');
+const cpuBox = document.getElementById('cpuBox');
+const infoBox = document.getElementById('infoBox');
+
+items.forEach(item=>{
+  item.addEventListener('dragstart', e=>{
+    e.dataTransfer.setData("text", e.target.id);
+  });
+});
+
+cpuBox.addEventListener('dragover', e=>{
+  e.preventDefault();
+});
+
+cpuBox.addEventListener('drop', e=>{
+  e.preventDefault();
+
+  let id = e.dataTransfer.getData("text");
+  let el = document.getElementById(id);
+
+  if(correct.includes(id)){
+    cpuBox.appendChild(el);
+    el.classList.add("correct");
+    score += 10;
+  } else {
+    el.classList.add("wrong");
+    score -= 5;
+  }
+
+  document.getElementById("score").innerText = "Skor: " + score;
+});
+
+function showInfo(text){
+  infoBox.innerText = text;
+}
+
+</script>
+
+</body>
+</html>
