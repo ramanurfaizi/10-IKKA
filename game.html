@@ -158,16 +158,6 @@ Power Supply
 Processor
 </div>
 
-<div class="item" draggable="true" id="kabellan" onclick="showInfo('Kabel Lan: bukan komponen PC 🚫')">
-<img src="https://media.s-bol.com/RlxNwGRr6NxE/1200x1058.jpg" width="100"><br>
-Kabel Lan
-</div>
-
-<div class="item" draggable="true" id="infocus" onclick="showInfo('Infocus: bukan komponen PC 🚫')">
-<img src="https://4.bp.blogspot.com/-yL-P626Ac8g/XItOSYgw2fI/AAAAAAAAADs/_imGoK1IArkg9vhEbPFo-qraoiGYiua6gCLcBGAs/s1600/Proyektor_Acer_X1123H_3.jpg" width="100"><br>
-Infocus
-</div>
-
 <div class="item" draggable="true" id="ssd" onclick="showInfo('SSD (Solid State Drive): adalah media penyimpanan modern yang menggunakan chip memori flash (seperti flashdisk, tapi lebih canggih).')">
 <img src="https://m.media-amazon.com/images/I/614b653JNXL._AC_.jpg" width="100"><br>
 SSD
@@ -182,6 +172,18 @@ HDD
 <img src="https://cdn.britannica.com/64/170564-050-7A0A86A2/motherboard-for-computer.jpg" width="100"><br>
 Motherboard
 </div>
+
+<div class="item" draggable="true" id="kabellan" onclick="showInfo('Kabel Lan: bukan komponen PC 🚫')">
+<img src="https://media.s-bol.com/RlxNwGRr6NxE/1200x1058.jpg" width="100"><br>
+Kabel Lan
+</div>
+
+<div class="item" draggable="true" id="infocus" onclick="showInfo('Infocus: bukan komponen PC 🚫')">
+<img src="https://4.bp.blogspot.com/-yL-P626Ac8g/XItOSYgw2fI/AAAAAAAAADs/_imGoK1IArkg9vhEbPFo-qraoiGYiua6gCLcBGAs/s1600/Proyektor_Acer_X1123H_3.jpg" width="100"><br>
+Infocus
+</div>
+
+
 
 </div>
 
@@ -198,7 +200,7 @@ Motherboard
 
 <script>
 let score = 0;
-const correct = ["keyboard","monitor","ram","mouse","powersupply","processor"];
+const correct = ["keyboard","monitor","ram","mouse","powersupply","processor","ssd","hdd","motherboard"];
 
 const items = document.querySelectorAll('.item');
 const cpuBox = document.getElementById('cpuBox');
